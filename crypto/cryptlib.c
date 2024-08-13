@@ -475,7 +475,7 @@ extern int FIPS_crypto_threadid_set_callback(void (*func) (CRYPTO_THREADID *));
 
 int CRYPTO_THREADID_set_callback(void (*func) (CRYPTO_THREADID *))
 {
-    if (threadid_callback)
+    if (threadid_callback && func)
         return 0;
     threadid_callback = func;
 #ifdef OPENSSL_FIPS
